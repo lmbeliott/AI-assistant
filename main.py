@@ -58,7 +58,7 @@ if matiere == "Français":
                             st.subheader("✅ Correction :")
                             st.write(correction)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
         
     st.write("## Dissertation")
     sujet = st.text_input("📖 Entre un sujet de dissertation :")
@@ -75,7 +75,7 @@ if matiere == "Français":
                         st.subheader("🎭 Plan de dissertation :")
                         st.write(plan)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
 elif matiere == "Maths":
     equation = st.text_input("🔢 Entre une équation ou un problème mathématique :")
@@ -95,7 +95,7 @@ elif matiere == "Maths":
                         st.subheader("🧮 Solution :")
                         st.write("Vous n'avez pas entré d'équations")
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
     st.write("## Aide à la révision 🧮")
     theme = st.text_input("🔢 Entre un Chapitre de Mathématique")
@@ -113,7 +113,7 @@ elif matiere == "Maths":
                         st.subheader("Entraînement :")
                         st.write(result)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
 
 elif matiere == "Physique-Chimie":
@@ -131,7 +131,7 @@ elif matiere == "Physique-Chimie":
                         st.subheader("🧪 Explication :")
                         st.write(explication)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
     st.write("## Aide à la révision ")
     theme = st.text_input("Entre un Chapitre de Physique ou de Chimie 🔬")
@@ -149,7 +149,7 @@ elif matiere == "Physique-Chimie":
                         st.subheader("Entraînement :")
                         st.write(result)
             else:
-                st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")     
+                st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")     
 
 elif matiere == "Histoire-Géo":
     sujet = st.text_input("📜 Entre un sujet historique ou géographique :")
@@ -167,7 +167,7 @@ elif matiere == "Histoire-Géo":
                         st.subheader("🗺️ Fiche de Révision :")
                         st.write(fiche)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
 elif matiere == "SVT":
     concept = st.text_input("🌱 Entre un concept de SVT à réviser :")
@@ -184,7 +184,7 @@ elif matiere == "SVT":
                         st.subheader("🧬 Explication :")
                         st.write(explication)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
     
     st.write("## Fiche de révision sur ce thème.")
     if st.button("Générer"):
@@ -200,7 +200,7 @@ elif matiere == "SVT":
                         st.subheader("🧬 Fiche :")
                         st.write(explication)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
 
 elif matiere == "Langues":
@@ -227,7 +227,7 @@ elif matiere == "Langues":
                         st.subheader("🌍 Résultat :")
                         st.write(reponse)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
 elif matiere == "Informatique":
     code = st.text_area("💻 Entre du code à analyser :")
@@ -244,7 +244,7 @@ elif matiere == "Informatique":
                         st.subheader("🖥️ Explication :")
                         st.write(correction)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
 elif matiere == "Planificateur de Révisions":
     matieres = st.text_area("📆 Entre les matières et chapitres à réviser :")
@@ -263,7 +263,7 @@ elif matiere == "Planificateur de Révisions":
                         st.subheader("📅 Planning de révision :")
                         st.write(planning)
         else:
-            st.warning("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
 
 st.markdown("---")
