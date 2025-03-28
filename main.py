@@ -3,7 +3,6 @@ import openai
 import os
 from dotenv import load_dotenv
 
-# Charger les variables du fichier .env
 load_dotenv()
 
 api_key = os.getenv("OPENAI_API_KEY")
@@ -74,7 +73,7 @@ elif matiere == "Maths":
     action = st.radio("Que veut tu générer ?", ["QCM avec correction détaillée", "DS d'entraînement", "Plusieurs exercices avec corrigé"])
     if st.button("Générer"):
         if theme:    
-            result = chat_with_gpt(f"Génère sur le chapitre de maths {theme}, niveau {classe}, {action} complet")
+            result = chat_with_gpt(f"Génère sur le chapitre de maths {theme}, il faut absolument que ça soit du niveau {classe}, {action} complet")
             st.subheader("Entraînement :")
             st.write(result)
 
@@ -94,7 +93,7 @@ elif matiere == "Physique-Chimie":
     action = st.radio("Que veut tu générer ?", ["QCM avec correction détaillée", "DS d'entraînement", "Plusieurs exercices avec corrigé"])
     if st.button("Générer"):
         if theme:    
-            result = chat_with_gpt(f"Génère sur le chapitre de physique-chimie {theme}, niveau {classe}, {action} complet")
+            result = chat_with_gpt(f"Génère sur le chapitre de physique-chimie {theme}, il faut absolument que ça soit du niveau {classe}, {action} complet")
             st.subheader("Entraînement :")
             st.write(result)
 
@@ -103,7 +102,7 @@ elif matiere == "Histoire-Géo":
     classe = st.selectbox("Quelle est ta classe ?", ["Terminale", "Première", "Seconde", "3ème", "4ème", "5ème", "6ème"])
     if st.button("Créer une fiche de révision"):
         if sujet:
-            prompt = f"Fais une fiche de révision concise et complète sur : {sujet}, pour un élève de niveau {classe}"
+            prompt = f"Fais une fiche de révision concise et complète sur : {sujet}, il faut absolument que ça soit du niveau {classe}"
             fiche = chat_with_gpt(prompt)
             st.subheader("🗺️ Fiche de Révision :")
             st.write(fiche)
