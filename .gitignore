@@ -1,0 +1,24 @@
+# ⚠️ Ne partage jamais ta clé API !
+api_key.txt
+config.py
+
+# Dossiers Python à ignorer
+__pycache__/
+*.pyc
+*.pyo
+
+# Fichiers de logs
+logs/
+*.log
+
+# Fichiers Streamlit temporaires
+.streamlit/
+
+# Bibliothèques locales et environnements virtuels
+venv/
+.env/
+.envrc
+
+# Fichiers système inutiles
+.DS_Store
+Thumbs.db
