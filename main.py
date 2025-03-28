@@ -10,7 +10,6 @@ max_char = 1000
 api_key = os.getenv("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
 
-
 def chat_with_gpt(prompt):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -37,121 +36,130 @@ if matiere == "Français":
     texte = st.text_area("📝 Entre ton texte pour correction :")
     action = st.radio("Que souhaites tu faire ?", ["Corriger la grammaire", "Améliorer la tournure de ton texte"])
     if st.button("Corriger"):
-        if len(texte) > max_char:
-            st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if texte:
-                if action == "Corriger la grammaire":
-                    prompt = f"Corrige les fautes d'orthographe et de grammaire dans ce texte : {texte}"
-                    correction = chat_with_gpt(prompt)
-                    st.subheader("✅ Correction :")
-                    st.write(correction)
-                else:
-                    prompt = f"Améliore la tournure des mots et des phrases pour les rendres plus belles dans ce texte : {texte}"
-                    correction = chat_with_gpt(prompt)
-                    st.subheader("✅ Correction :")
-                    st.write(correction)
+        with st.spinner("Chargement en cours..."):
+            if len(texte) > max_char:
+                st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if texte:
+                    if action == "Corriger la grammaire":
+                        prompt = f"Corrige les fautes d'orthographe et de grammaire dans ce texte : {texte}"
+                        correction = chat_with_gpt(prompt)
+                        st.subheader("✅ Correction :")
+                        st.write(correction)
+                    else:
+                        prompt = f"Améliore la tournure des mots et des phrases pour les rendres plus belles dans ce texte : {texte}"
+                        correction = chat_with_gpt(prompt)
+                        st.subheader("✅ Correction :")
+                        st.write(correction)
         
     st.write("## Dissertation")
     sujet = st.text_input("📖 Entre un sujet de dissertation :")
     if st.button("Générer un plan expliqué"):
-        if len(texte) > max_char:
-            st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if sujet:
-                prompt = f"Donne un plan détaillé pour une dissertation sur : {sujet} en l'expliquant"
-                plan = chat_with_gpt(prompt)
-                st.subheader("🎭 Plan de dissertation :")
-                st.write(plan)
+        with st.spinner("Chargement en cours..."):    
+            if len(texte) > max_char:
+                st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if sujet:
+                    prompt = f"Donne un plan détaillé pour une dissertation sur : {sujet} en l'expliquant"
+                    plan = chat_with_gpt(prompt)
+                    st.subheader("🎭 Plan de dissertation :")
+                    st.write(plan)
 
 elif matiere == "Maths":
     equation = st.text_input("🔢 Entre une équation ou un problème mathématique :")
     if st.button("Résoudre"):
-        if len(equation) > max_char:
-            st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if equation:
-                prompt = f"Résous cet exercice de maths en expliquant chaque étape : {equation}"
-                solution = chat_with_gpt(prompt)
-                st.subheader("🧮 Solution :")
-                st.write(solution)
+        with st.spinner("Chargement en cours..."):
+            if len(equation) > max_char:
+                st.write("⛔ La requête est trop longue. Réduis ton texte.")
             else:
-                st.subheader("🧮 Solution :")
-                st.write("Vous n'avez pas entré d'équations")
+                if equation:
+                    prompt = f"Résous cet exercice de maths en expliquant chaque étape : {equation}"
+                    solution = chat_with_gpt(prompt)
+                    st.subheader("🧮 Solution :")
+                    st.write(solution)
+                else:
+                    st.subheader("🧮 Solution :")
+                    st.write("Vous n'avez pas entré d'équations")
     st.write("## Aide à la révision 🧮")
     theme = st.text_input("🔢 Entre un Chapitre de Mathématique")
     classe = st.selectbox("Quelle est ta classe ?", ["Terminale", "Première", "Seconde", "3ème", "4ème", "5ème", "6ème"])
     action = st.radio("Que veut tu générer ?", ["QCM avec correction détaillée", "DS d'entraînement", "Plusieurs exercices avec corrigé"])
     if st.button("Générer"):
-        if len(theme) > max_char:
-            st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if theme:    
-                result = chat_with_gpt(f"Génère sur le chapitre de maths {theme}, il faut absolument que ça soit du niveau {classe}, {action} complet")
-                st.subheader("Entraînement :")
-                st.write(result)
+        with st.spinner("Chargement en cours..."):
+            if len(theme) > max_char:
+                st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if theme:    
+                    result = chat_with_gpt(f"Génère sur le chapitre de maths {theme}, il faut absolument que ça soit du niveau {classe}, {action} complet")
+                    st.subheader("Entraînement :")
+                    st.write(result)
 
 
 
 elif matiere == "Physique-Chimie":
     question = st.text_area("🔬 Entre une question sur la physique ou la chimie :")
     if st.button("Expliquer"):
-        if len(question) > max_char:
-            st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if question:
-                prompt = f"Explique en détail cette question de physique ou chimie : {question}"
-                explication = chat_with_gpt(prompt)
-                st.subheader("🧪 Explication :")
-                st.write(explication)
+        with st.spinner("Chargement en cours..."):
+            if len(question) > max_char:
+                st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if question:
+                    prompt = f"Explique en détail cette question de physique ou chimie : {question}"
+                    explication = chat_with_gpt(prompt)
+                    st.subheader("🧪 Explication :")
+                    st.write(explication)
     st.write("## Aide à la révision ")
     theme = st.text_input("Entre un Chapitre de Physique ou de Chimie 🔬")
     classe = st.selectbox("Quelle est ta classe ?", ["Terminale", "Première", "Seconde", "3ème", "4ème", "5ème", "6ème"])
     action = st.radio("Que veut tu générer ?", ["QCM avec correction détaillée", "DS d'entraînement", "Plusieurs exercices avec corrigé"])
-    if st.button("Générer"):
-        if len(theme) > max_char:
-            st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if theme:    
-                result = chat_with_gpt(f"Génère sur le chapitre de physique-chimie {theme}, il faut absolument que ça soit du niveau {classe}, {action} complet")
-                st.subheader("Entraînement :")
-                st.write(result)
+    with st.spinner("Chargement en cours..."):    
+        if st.button("Générer"):
+            if len(theme) > max_char:
+                st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if theme:    
+                    result = chat_with_gpt(f"Génère sur le chapitre de physique-chimie {theme}, il faut absolument que ça soit du niveau {classe}, {action} complet")
+                    st.subheader("Entraînement :")
+                    st.write(result)
 
 elif matiere == "Histoire-Géo":
     sujet = st.text_input("📜 Entre un sujet historique ou géographique :")
     classe = st.selectbox("Quelle est ta classe ?", ["Terminale", "Première", "Seconde", "3ème", "4ème", "5ème", "6ème"])
     if st.button("Créer une fiche de révision"):
-        if sujet:
-            if len(sujet) > max_char:
-                st.write("⛔ La requête est trop longue. Réduis ton texte.")
-            else:
-                prompt = f"Fais une fiche de révision concise et complète sur : {sujet}, il faut absolument que ça soit du niveau {classe}"
-                fiche = chat_with_gpt(prompt)
-                st.subheader("🗺️ Fiche de Révision :")
-                st.write(fiche)
+        with st.spinner("Chargement en cours..."):
+            if sujet:
+                if len(sujet) > max_char:
+                    st.write("⛔ La requête est trop longue. Réduis ton texte.")
+                else:
+                    prompt = f"Fais une fiche de révision concise et complète sur : {sujet}, il faut absolument que ça soit du niveau {classe}"
+                    fiche = chat_with_gpt(prompt)
+                    st.subheader("🗺️ Fiche de Révision :")
+                    st.write(fiche)
 
 elif matiere == "SVT":
     concept = st.text_input("🌱 Entre un concept de SVT à réviser :")
     if st.button("Expliquer"):
-        if len(concept) > max_char:
-                st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if concept:
-                prompt = f"Explique clairement ce concept de SVT : {concept}"
-                explication = chat_with_gpt(prompt)
-                st.subheader("🧬 Explication :")
-                st.write(explication)
+        with st.spinner("Chargement en cours..."):
+            if len(concept) > max_char:
+                    st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if concept:
+                    prompt = f"Explique clairement ce concept de SVT : {concept}"
+                    explication = chat_with_gpt(prompt)
+                    st.subheader("🧬 Explication :")
+                    st.write(explication)
     
     st.write("## Fiche de révision sur ce thème.")
     if st.button("Générer"):
-        if len(concept) > max_char:
-                st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if concept:
-                prompt = f"Fais une fiche de révision claire et concise sur ce concept de SVT : {concept}"
-                explication = chat_with_gpt(prompt)
-                st.subheader("🧬 Fiche :")
-                st.write(explication)
+        with st.spinner("Chargement en cours..."):
+            if len(concept) > max_char:
+                    st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if concept:
+                    prompt = f"Fais une fiche de révision claire et concise sur ce concept de SVT : {concept}"
+                    explication = chat_with_gpt(prompt)
+                    st.subheader("🧬 Fiche :")
+                    st.write(explication)
 
 
 
@@ -161,46 +169,49 @@ elif matiere == "Langues":
     action = st.radio("Que veux-tu faire ?", ["Corriger", "Traduire", "S'entraîner à parler"])
 
     if st.button("Lancer"):
-        if len(phrase) > max_char:
-                st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if phrase:
-                if action == "Corriger":
-                    prompt = f"Corrige cette phrase en {langue} : {phrase}"
-                elif action == "Traduire":
-                    prompt = f"Traduis cette phrase en {langue} : {phrase}"
-                else:
-                    prompt = f"Imagine un dialogue en {langue} où tu réponds à : {phrase}"
+        with st.spinner("Chargement en cours..."):
+            if len(phrase) > max_char:
+                    st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if phrase:
+                    if action == "Corriger":
+                        prompt = f"Corrige cette phrase en {langue} : {phrase}"
+                    elif action == "Traduire":
+                        prompt = f"Traduis cette phrase en {langue} : {phrase}"
+                    else:
+                        prompt = f"Imagine un dialogue en {langue} où tu réponds à : {phrase}"
 
-                reponse = chat_with_gpt(prompt)
-                st.subheader("🌍 Résultat :")
-                st.write(reponse)
+                    reponse = chat_with_gpt(prompt)
+                    st.subheader("🌍 Résultat :")
+                    st.write(reponse)
 
 elif matiere == "Informatique":
     code = st.text_area("💻 Entre du code à analyser :")
     if st.button("Débugger/Expliquer"):
-        if len(code) > max_char:
-                st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if code:
-                prompt = f"Analyse et corrige ce code, en expliquant les erreurs : {code}"
-                correction = chat_with_gpt(prompt)
-                st.subheader("🖥️ Explication :")
-                st.write(correction)
+        with st.spinner("Chargement en cours..."):
+            if len(code) > max_char:
+                    st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if code:
+                    prompt = f"Analyse et corrige ce code, en expliquant les erreurs : {code}"
+                    correction = chat_with_gpt(prompt)
+                    st.subheader("🖥️ Explication :")
+                    st.write(correction)
 
 elif matiere == "Planificateur de Révisions":
     matieres = st.text_area("📆 Entre les matières et chapitres à réviser :")
     temps = st.slider("⏳ Temps de révision par jour (en minutes) :", 30, 180, 60)
 
     if st.button("Générer un planning"):
-        if len(matieres) > max_char:
-                st.write("⛔ La requête est trop longue. Réduis ton texte.")
-        else:
-            if matieres:
-                prompt = f"Génère un planning de révisions avec {temps} minutes par jour pour ces matières : {matieres}"
-                planning = chat_with_gpt(prompt)
-                st.subheader("📅 Planning de révision :")
-                st.write(planning)
+        with st.spinner("Chargement en cours..."):
+            if len(matieres) > max_char:
+                    st.write("⛔ La requête est trop longue. Réduis ton texte.")
+            else:
+                if matieres:
+                    prompt = f"Génère un planning de révisions avec {temps} minutes par jour pour ces matières : {matieres}"
+                    planning = chat_with_gpt(prompt)
+                    st.subheader("📅 Planning de révision :")
+                    st.write(planning)
 
 
 st.markdown("---")
