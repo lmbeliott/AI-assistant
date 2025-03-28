@@ -87,7 +87,7 @@ elif matiere == "Maths":
             st.write("⛔ La requête est trop longue. Réduis ton texte.")
         else:
             if theme:    
-                result = chat_with_gpt(f"Génère sur le chapitre de maths {theme}, il faut absolument que ça soit du niveau {classe}, {action} complet")
+                result = chat_with_gpt(f"Génère sur le chapitre de maths {theme}, il faut absolument que ça soit du niveau {classe}  Respecte STRICTEMENT le programme scolaire officiel français. Inclue uniquement des notions étudiées à ce niveau., {action} complet")
                 st.subheader("Entraînement :")
                 st.write(result)
 
@@ -113,7 +113,7 @@ elif matiere == "Physique-Chimie":
             st.write("⛔ La requête est trop longue. Réduis ton texte.")
         else:
             if theme:    
-                result = chat_with_gpt(f"Génère sur le chapitre de physique-chimie {theme}, il faut absolument que ça soit du niveau {classe}, {action} complet")
+                result = chat_with_gpt(f"Génère sur le chapitre de physique-chimie {theme}, il faut absolument que ça soit du niveau {classe}  Respecte STRICTEMENT le programme scolaire officiel français. Inclue uniquement des notions étudiées à ce niveau. , {action} complet")
                 st.subheader("Entraînement :")
                 st.write(result)
 
@@ -125,7 +125,7 @@ elif matiere == "Histoire-Géo":
             if len(sujet) > max_char:
                 st.write("⛔ La requête est trop longue. Réduis ton texte.")
             else:
-                prompt = f"Fais une fiche de révision concise et complète sur : {sujet}, il faut absolument que ça soit du niveau {classe}"
+                prompt = f"Fais une fiche de révision concise et complète sur : {sujet}, il faut absolument que ça soit du niveau {classe} Respecte STRICTEMENT le programme scolaire officiel français. Inclue uniquement des notions étudiées à ce niveau."
                 fiche = chat_with_gpt(prompt)
                 st.subheader("🗺️ Fiche de Révision :")
                 st.write(fiche)
