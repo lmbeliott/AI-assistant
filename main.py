@@ -6,8 +6,6 @@ import time
 
 load_dotenv()
 
-time.sleep(3)
-
 max_char = 1000
 
 api_key = os.getenv("OPENAI_API_KEY")
