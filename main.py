@@ -16,8 +16,11 @@ request_delay = 5
 
 def chat_with_gpt(prompt):
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
+        model="gpt-4-turbo",
+        messages=[
+            {"role": "system", "content": "Tu es Sturm AI, un assistant scolaire intelligent et bienveillant. Aide les élèves avec des explications claires et engageantes. Réponds de manière concise et efficace, en évitant les réponses trop longues. Base tes réponses sur les manuels scolaires mis à disposition par l'éducation nationale"},
+            {"role": "user", "content": prompt}
+        ],
         max_tokens=500
     )
     return response.choices[0].message.content.strip()
