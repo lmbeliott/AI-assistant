@@ -271,3 +271,6 @@ elif matiere == "Planificateur de Révisions":
 
 st.markdown("---")
 st.markdown("👨‍💻 *Créé avec ❤️ par Eliott LAMBERT-ROME*")
+st.markdown("---")
+st.markdown("👨‍💻 *Copyright © Eliott LAMBERT-ROME 2025*")
+
