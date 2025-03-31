@@ -10,6 +10,7 @@ max_char = 1000
 
 api_key = os.getenv("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
+voice = openai.audio
 
 last_request_time = None
 request_delay = 5
@@ -21,7 +22,6 @@ def chat_with_gpt(prompt):
             {"role": "system", "content": "Tu es Sturm AI, un assistant scolaire intelligent et bienveillant. Aide les élèves avec des explications claires et engageantes. Réponds de manière concise et efficace, en évitant les réponses trop longues. Base tes réponses sur les manuels scolaires mis à disposition par l'éducation nationale"},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=500
     )
     return response.choices[0].message.content.strip()
 
@@ -268,7 +268,5 @@ elif matiere == "Planificateur de Révisions":
         else:
             st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
-
 st.markdown("---")
 st.markdown("👨‍💻 *Créé avec ❤️ par Eliott LAMBERT-ROME Copyright © 2025*")
-
