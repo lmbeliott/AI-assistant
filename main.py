@@ -172,6 +172,20 @@ elif matiere == "Histoire-Géo":
         else:
             st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
 
+    st.write("## Dissertation")
+    sujet = st.text_input("📖 Entre un sujet de dissertation :")
+    if st.button("Générer un plan expliqué"):
+        if last_request_time is None or (time.time() - last_request_time > request_delay):   
+            with st.spinner("Chargement en cours..."):
+                last_request_time = time.time()    
+                if sujet:
+                    prompt = f"Donne un plan détaillé pour une dissertation sur : {sujet} en l'expliquant"
+                    plan = chat_with_gpt(prompt)
+                    st.subheader("🎭 Plan de dissertation :")
+                    st.write(plan)
+        else:
+            st.write("Veuillez attendre quelques secondes avant de soumettre à nouveau.")
+
 elif matiere == "SVT":
     concept = st.text_input("🌱 Entre un concept de SVT à réviser :")
     if st.button("Expliquer"):
